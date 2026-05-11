@@ -86,6 +86,7 @@ cp myself-ai.example.json ~/.myself-ai/myself-ai.json
 | `claude.bin_path` | `claude` | Claude Code CLI 路径。 |
 | `claude.default_model` | `sonnet` | 默认 Claude 模型 key。 |
 | `codex.bin_path` | `codex` | Codex CLI 路径。 |
+| `codex.timeout_seconds` | `3600` | Codex 任务超时时间。 |
 | `codex.sandbox` | `workspace-write` | Codex 沙箱模式。 |
 | `kiro.bin_path` | `kiro-cli` | Kiro 兼容 CLI 路径。 |
 | `kiro.model` | `claude-opus-4.7` | 默认 Kiro 执行器模型。 |

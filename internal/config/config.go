@@ -160,7 +160,7 @@ func defaultConfig() *Config {
 	cfg.Claude.AutoSelect = true
 	cfg.Claude.DefaultModel = "sonnet"
 	cfg.Codex.BinPath = "codex"
-	cfg.Codex.TimeoutSeconds = 300
+	cfg.Codex.TimeoutSeconds = 3600
 	cfg.Codex.Model = "gpt-5.5"
 	cfg.Codex.Sandbox = "workspace-write"
 	cfg.Kiro.BinPath = "kiro-cli"
@@ -218,7 +218,7 @@ func applyDefaults(cfg *Config) {
 		cfg.Codex.BinPath = "codex"
 	}
 	if cfg.Codex.TimeoutSeconds == 0 {
-		cfg.Codex.TimeoutSeconds = 300
+		cfg.Codex.TimeoutSeconds = 3600
 	}
 	if cfg.Codex.Model == "" {
 		cfg.Codex.Model = "gpt-5.5"

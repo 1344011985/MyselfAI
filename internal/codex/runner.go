@@ -28,7 +28,7 @@ func New(binPath string, timeoutSeconds int, sandbox, workdir, model string) *Ru
 		binPath = "codex"
 	}
 	if timeoutSeconds <= 0 {
-		timeoutSeconds = 300
+		timeoutSeconds = 3600
 	}
 	if strings.TrimSpace(sandbox) == "" {
 		sandbox = "workspace-write"

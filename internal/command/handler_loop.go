@@ -21,7 +21,7 @@ type loopHandler struct {
 }
 
 var dailyTimePattern = regexp.MustCompile(`(?i)(?:每天|daily).{0,12}?(\d{1,2})(?:[:：点](\d{1,2})?)?`)
-var intervalMinutePattern = regexp.MustCompile(`(?i)(?:每|every)\s*(\d{1,4})\s*(?:分钟|minute|minutes|min|m)`)
+var intervalPattern = regexp.MustCompile(`(?i)(?:每|every)\s*(\d{1,4})\s*(分钟|分|minute|minutes|min|m|小时|钟头|hour|hours|hr|hrs|h)`)
 var everyMinutePattern = regexp.MustCompile(`(?i)(?:每分钟|every\s+minute)`)
 var taskDonePattern = regexp.MustCompile(`(?i)(task[_ -]?done|任务完成|完成后继续|跑完继续|自我迭代|持续推进|继续下一步)`)
 
@@ -378,10 +378,16 @@ func inferPlanSchedule(goal string) loop.PlanSchedule {
 			schedule.Time = fmt.Sprintf("%02d:%02d", hour, minute)
 		}
 	}
-	intervalMatches := intervalMinutePattern.FindStringSubmatch(goal)
-	if len(intervalMatches) >= 2 {
-		minutes, err := strconv.Atoi(intervalMatches[1])
-		if err == nil && minutes > 0 {
+	intervalMatches := intervalPattern.FindStringSubmatch(goal)
+	if len(intervalMatches) >= 3 {
+		amount, err := strconv.Atoi(intervalMatches[1])
+		if err == nil && amount > 0 {
+			minutes := amount
+			unit := strings.ToLower(intervalMatches[2])
+			switch unit {
+			case "小时", "钟头", "hour", "hours", "hr", "hrs", "h":
+				minutes = amount * 60
+			}
 			schedule.Kind = "interval"
 			schedule.IntervalMinutes = minutes
 			schedule.Time = ""

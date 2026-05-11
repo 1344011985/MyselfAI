@@ -88,6 +88,7 @@ Important fields:
 | `claude.bin_path` | `claude` | Claude Code CLI path. |
 | `claude.default_model` | `sonnet` | Default Claude model key. |
 | `codex.bin_path` | `codex` | Codex CLI path. |
+| `codex.timeout_seconds` | `3600` | Codex task timeout. |
 | `codex.sandbox` | `workspace-write` | Codex sandbox mode. |
 | `kiro.bin_path` | `kiro-cli` | Kiro-compatible CLI path. |
 | `kiro.model` | `claude-opus-4.7` | Default Kiro executor model. |
