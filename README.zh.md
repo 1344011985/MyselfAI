@@ -15,7 +15,7 @@
 
 ## 前置要求
 
-- Go 1.21+。
+- Go 1.24+。
 - 一个飞书/Lark 自建应用，启用机器人和 WebSocket 事件订阅。
 - 机器能访问 `open.feishu.cn`。
 - 至少安装并登录一个执行器 CLI：
@@ -70,47 +70,10 @@ go build \
 
 ```bash
 mkdir -p ~/.myself-ai
-cat > ~/.myself-ai/myself-ai.json <<'JSON'
-{
-  "channel": "feishu",
-  "feishu": {
-    "app_id": "cli_xxxxxxxxxxxxxxxx",
-    "app_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "bot_open_id": ""
-  },
-  "claude": {
-    "bin_path": "claude",
-    "timeout_seconds": 3600,
-    "default_model": "sonnet",
-    "auto_select": true
-  },
-  "codex": {
-    "bin_path": "codex",
-    "timeout_seconds": 300,
-    "model": "gpt-5.5",
-    "sandbox": "workspace-write"
-  },
-  "kiro": {
-    "bin_path": "kiro-cli",
-    "timeout_seconds": 3600,
-    "model": ""
-  },
-  "memory": {
-    "db_path": ""
-  },
-  "notes": {
-    "dir": ""
-  },
-  "images": {
-    "cache_dir": "",
-    "max_size_mb": 10
-  },
-  "allowlist": [],
-  "log_level": "info",
-  "system_prompt": ""
-}
-JSON
+cp myself-ai.example.json ~/.myself-ai/myself-ai.json
 ```
+
+然后编辑 `~/.myself-ai/myself-ai.json`，填入飞书应用凭据和执行器 CLI 路径。
 
 关键字段：
 
@@ -125,6 +88,7 @@ JSON
 | `codex.bin_path` | `codex` | Codex CLI 路径。 |
 | `codex.sandbox` | `workspace-write` | Codex 沙箱模式。 |
 | `kiro.bin_path` | `kiro-cli` | Kiro 兼容 CLI 路径。 |
+| `kiro.model` | `claude-opus-4.7` | 默认 Kiro 执行器模型。 |
 | `memory.db_path` | `~/.myself-ai/data/bot.db` | SQLite 数据库路径。 |
 | `notes.dir` | `~/.myself-ai/notes` | 本地 notes 目录。 |
 | `allowlist` | 所有用户 | 可选，限制可使用的飞书 open_id。 |

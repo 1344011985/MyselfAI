@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 
 $Binary   = "myself-ai"
 $DistDir  = "dist"
-$Pkg      = "github.com/1344011985/MyselfAI/internal/command"
+$Pkg      = "main"
 
 $Commit = (git rev-parse --short HEAD 2>$null) -replace "`n",""
 if (-not $Commit) { $Commit = "unknown" }

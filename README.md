@@ -17,7 +17,7 @@
 
 ## Requirements
 
-- Go 1.21+.
+- Go 1.24+.
 - A Feishu/Lark custom app with WebSocket events enabled.
 - Network access to `open.feishu.cn`.
 - At least one authenticated executor CLI:
@@ -72,47 +72,10 @@ Create the directory and config file before running:
 
 ```bash
 mkdir -p ~/.myself-ai
-cat > ~/.myself-ai/myself-ai.json <<'JSON'
-{
-  "channel": "feishu",
-  "feishu": {
-    "app_id": "cli_xxxxxxxxxxxxxxxx",
-    "app_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "bot_open_id": ""
-  },
-  "claude": {
-    "bin_path": "claude",
-    "timeout_seconds": 3600,
-    "default_model": "sonnet",
-    "auto_select": true
-  },
-  "codex": {
-    "bin_path": "codex",
-    "timeout_seconds": 300,
-    "model": "gpt-5.5",
-    "sandbox": "workspace-write"
-  },
-  "kiro": {
-    "bin_path": "kiro-cli",
-    "timeout_seconds": 3600,
-    "model": ""
-  },
-  "memory": {
-    "db_path": ""
-  },
-  "notes": {
-    "dir": ""
-  },
-  "images": {
-    "cache_dir": "",
-    "max_size_mb": 10
-  },
-  "allowlist": [],
-  "log_level": "info",
-  "system_prompt": ""
-}
-JSON
+cp myself-ai.example.json ~/.myself-ai/myself-ai.json
 ```
+
+Then edit `~/.myself-ai/myself-ai.json` and fill in your Feishu app credentials and executor CLI paths.
 
 Important fields:
 
@@ -127,6 +90,7 @@ Important fields:
 | `codex.bin_path` | `codex` | Codex CLI path. |
 | `codex.sandbox` | `workspace-write` | Codex sandbox mode. |
 | `kiro.bin_path` | `kiro-cli` | Kiro-compatible CLI path. |
+| `kiro.model` | `claude-opus-4.7` | Default Kiro executor model. |
 | `memory.db_path` | `~/.myself-ai/data/bot.db` | SQLite database path. |
 | `notes.dir` | `~/.myself-ai/notes` | File notes directory. |
 | `allowlist` | all users | Optional Feishu open_id allowlist. |

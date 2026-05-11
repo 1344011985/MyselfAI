@@ -1,6 +1,6 @@
 BINARY   := myself-ai
 DIST_DIR := dist
-PKG      := github.com/1344011985/MyselfAI/internal/command
+PKG      := main
 COMMIT   := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 DATE     := $(shell date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo "unknown")
 LDFLAGS  := -X $(PKG).GitCommit=$(COMMIT) -X $(PKG).BuildDate=$(DATE)

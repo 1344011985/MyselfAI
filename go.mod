@@ -5,6 +5,7 @@ go 1.24.1
 require (
 	github.com/go-rod/rod v0.116.2
 	github.com/larksuite/oapi-sdk-go/v3 v3.5.3
+	github.com/mark3labs/mcp-go v0.45.0
 	modernc.org/sqlite v1.46.1
 	pgregory.net/rapid v1.2.0
 )
@@ -18,7 +19,6 @@ require (
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/invopop/jsonschema v0.13.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/mark3labs/mcp-go v0.45.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
